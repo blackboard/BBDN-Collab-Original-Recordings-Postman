@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "6b6245ad-9fae-4660-84bb-4bb6084163d0",
+		"name": "Collab Original Recording Downloads",
+		"description": "This collection will help you download your Collaborate Original recordings using POSTMAN. \n\nOn the variables page, you will need to enter your username, password, and the email address you want to send the results to.\n\n* **USERNAME**: This is the SOAP API username used in the integration tools\n* **PASSWORD**: This is the SOAP API password used in the integration tools\n* **EMAIL**: Email to which the notification will be sent when the recording metadata are ready. The email would contain a link to download the CSV file\n\nCurrently, we only provide this capability in the Australian data center. As we add more, this collection will be updated for those endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Recording Metadata - Australia",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"{{USERNAME}}\",\n    \"password\" : \"{{PASSWORD}}\",\n    \"email\" : \"{{EMAIL}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{AU_HOST}}/collab/original/recordings/metadata",
+					"protocol": "https",
+					"host": [
+						"{{AU_HOST}}"
+					],
+					"path": [
+						"collab",
+						"original",
+						"recordings",
+						"metadata"
+					]
+				},
+				"description": "This request will kick off the process to generate the metadata for  Collab Original Recordings in Australia. The result is an email to the provided email address with a download link."
+			},
+			"response": []
+		},
+		{
+			"name": "Download Recording Metadata - Australia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Once the metadata CSV is built, the end user will get an email stating that the file is ready for download. You can click that link and download, or request the file via API"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "88082ce3-5fa7-47f2-be3a-22fc2799f6ed",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "0489e891-706d-48b7-8dc8-4545dc170a84",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8a5877a7-54e4-426e-a973-2240611ac55a",
+			"key": "AU_HOST",
+			"value": "kuldblnwbh.execute-api.ap-southeast-2.amazonaws.com",
+			"type": "string"
+		},
+		{
+			"id": "47bf592a-1c13-42b7-b350-e95a2bd57dce",
+			"key": "USERNAME",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "c1e53f35-1687-4071-8d55-2a7130084be3",
+			"key": "PASSWORD",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "88fc5e39-8dc3-4cb0-a95d-cb30c74ff794",
+			"key": "EMAIL",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
